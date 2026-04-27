@@ -1,0 +1,114 @@
+# Smithery Registry — HiveEvaluator MCP Server
+# https://smithery.ai
+
+startCommand:
+  type: http
+  configSchema:
+    type: object
+    properties: {}
+    required: []
+  url: https://hivemorph.onrender.com/mcp/hive-mcp-evaluator
+
+name: hive-mcp-evaluator
+displayName: HiveEvaluator — ERC-8183 / Virtuals ACP v2.0 evaluator-as-a-service for autonomous AI agents
+version: "1.0.0"
+description: >
+  MCP server for the Hive Evaluator platform. Implements ERC-8183 / Virtuals ACP v2.0 evaluator-as-a-service: agents submit jobs, the evaluator scores them across 3 tiers (simple / evaluation / arbitration), settles fees in USDC on Base, Ethereum, or Solana, and emits an attestation. Fees: 0.5% / 1.0% / 2.0% with a $0.05 minimum. Real rails. No mock. No simulated settlement.
+
+author:
+  name: Steve Rotzin
+  email: steve@thehiveryiq.com
+  url: https://www.thehiveryiq.com
+
+license: MIT
+homepage: https://github.com/srotzin/hive-mcp-evaluator
+repository:
+  type: git
+  url: https://github.com/srotzin/hive-mcp-evaluator
+
+transport: streamable-http
+endpoint: https://hivemorph.onrender.com/mcp
+protocol: "2024-11-05"
+
+categories:
+  - finance
+  - agent-to-agent
+  - evaluation
+  - compliance
+  - web3
+  - defi
+
+tags:
+  - mcp
+  - hive
+  - evaluator
+  - erc-8183
+  - virtuals-acp
+  - ai-agents
+  - a2a
+  - usdc
+  - base-l2
+  - attestation
+
+tools:
+- name: evaluator_get_fees
+  description: >
+    Get the live evaluator fee schedule (3 tiers, settlement currencies, recipient addresses, ERC-8183 / Virtuals ACP v2.0 spec). No auth required.
+  inputs:
+    []
+- name: evaluator_submit_job
+  description: >
+    Submit a job for evaluation. Choose tier (simple, evaluation, arbitration). Job value is quoted in USDC; fee = max($0.05, value * tier_bps / 10000). Returns job_id and quoted fee.
+  inputs:
+    - name: tier
+  type: string
+  required: true
+  description: "'simple' (0.5%), 'evaluation' (1.0%), or 'arbitration' (2.0%)"
+- name: job_value_usdc
+  type: number
+  required: true
+  description: "Notional job value in USDC"
+- name: subject_did
+  type: string
+  required: true
+  description: "DID of the agent or output being evaluated"
+- name: submitter_did
+  type: string
+  required: true
+  description: "DID of the submitting agent"
+- name: context
+  type: string
+  required: false
+  description: "Free-form context for the evaluator (max 4 KB)"
+      - name: evaluator_get_job
+description: >
+  Retrieve evaluation status, verdict, and attestation for a previously-submitted job.
+inputs:
+  - name: job_id
+type: string
+required: true
+description: "Job ID returned from evaluator_submit_job"
+- name: evaluator_attest_job
+  description: >
+    Trigger settlement and emit the on-chain attestation for a completed job. Settles to the Hive Safe Treasury on the chain selected at submission. Requires EIP-3009 signature for Base/Ethereum.
+  inputs:
+    - name: job_id
+  type: string
+  required: true
+  description: "Job ID returned from evaluator_submit_job"
+- name: signature
+  type: string
+  required: false
+  description: "EIP-3009 signature (required for EVM chains)"
+
+runtime:
+  type: node
+  version: ">=18"
+  command: node server.js
+  env:
+    - name: PORT
+      default: "3000"
+      required: false
+    - name: HIVE_BASE
+      default: "https://hivemorph.onrender.com"
+      required: false

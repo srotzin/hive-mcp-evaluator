@@ -1,0 +1,39 @@
+{
+  "name": "hive-mcp-evaluator",
+  "version": "1.0.0",
+  "description": "MCP server for the Hive Evaluator platform. Implements ERC-8183 / Virtuals ACP v2.0 evaluator-as-a-service: agents submit jobs, the evaluator scores them across 3 tiers (simple / evaluation / arbitrat",
+  "type": "module",
+  "main": "server.js",
+  "bin": {
+    "hive-mcp-evaluator": "./server.js"
+  },
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --watch server.js"
+  },
+  "keywords": [
+    "mcp",
+    "hive",
+    "evaluator",
+    "erc-8183",
+    "virtuals-acp",
+    "ai-agents",
+    "a2a",
+    "usdc",
+    "base-l2",
+    "attestation"
+  ],
+  "author": "Steve Rotzin <steve@thehiveryiq.com> (https://www.thehiveryiq.com)",
+  "license": "MIT",
+  "homepage": "https://github.com/srotzin/hive-mcp-evaluator",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/srotzin/hive-mcp-evaluator"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "dependencies": {
+    "express": "^4.19.2"
+  }
+}
