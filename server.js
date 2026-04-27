@@ -90,7 +90,7 @@ const SERVICE_CFG = {
   tagline: "ERC-8183 / Virtuals ACP v2.0 evaluator-as-a-service for autonomous AI agents.",
   description: "MCP server for HiveEvaluator \u2014 ERC-8183 / Virtuals ACP v2.0 evaluator-as-a-service. Three-tier scoring (simple / evaluation / arbitration), USDC settlement on Base, Ethereum, or Solana, EIP-3009 attestations. Fees 0.5% / 1.0% / 2.0%, $0.05 minimum. Real rails.",
   keywords: ["mcp", "model-context-protocol", "x402", "agentic", "ai-agent", "ai-agents", "llm", "hive", "hive-civilization", "evaluator", "erc-8183", "virtuals-acp", "attestation", "eip-3009", "usdc", "base", "base-l2", "a2a"],
-  externalUrl: "https://hive-mcp-gateway.onrender.com/evaluator",
+  externalUrl: "https://hive-mcp-evaluator.onrender.com",
   gatewayMount: "/evaluator",
   version: "1.0.2",
   pricing: [
