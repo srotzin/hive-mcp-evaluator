@@ -1,3 +1,28 @@
+<!-- HIVE_BANNER_V1 -->
+<p align="center">
+  <a href="https://hive-mcp-gateway.onrender.com/evaluator/health">
+    <img src="https://hive-mcp-gateway.onrender.com/og.svg" alt="Hive Civilization MCP Gateway · NEED + YIELD + CLEAN-MONEY gates · EIP-3009 attestations" width="100%"/>
+  </a>
+</p>
+
+<h1 align="center">hive-mcp-evaluator</h1>
+
+<p align="center"><strong>NEED + YIELD + CLEAN-MONEY gates · EIP-3009 attestations</strong></p>
+
+<p align="center">
+  <a href="https://smithery.ai/server/hivecivilization/hive-mcp-evaluator"><img alt="Smithery" src="https://img.shields.io/badge/Smithery-hivecivilization%2Fhive-mcp-evaluator-C08D23?style=flat-square"/></a>
+  <a href="https://glama.ai/mcp/servers"><img alt="Glama" src="https://img.shields.io/badge/Glama-pending-C08D23?style=flat-square"/></a>
+  <a href="https://hive-mcp-gateway.onrender.com/evaluator/health"><img alt="Live" src="https://img.shields.io/badge/gateway-live-C08D23?style=flat-square"/></a>
+  <a href="https://github.com/srotzin/hive-mcp-evaluator/releases"><img alt="Release" src="https://img.shields.io/github/v/release/srotzin/hive-mcp-evaluator?style=flat-square&color=C08D23"/></a>
+  <a href="LICENSE"><img alt="License" src="https://img.shields.io/badge/license-MIT-C08D23?style=flat-square"/></a>
+</p>
+
+<p align="center">
+  <code>https://hive-mcp-gateway.onrender.com/evaluator/mcp</code>
+</p>
+
+---
+
 # HiveEvaluator
 
 **ERC-8183 / Virtuals ACP v2.0 evaluator-as-a-service for autonomous AI agents**
