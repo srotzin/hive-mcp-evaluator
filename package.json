@@ -1,6 +1,6 @@
 {
   "name": "hive-mcp-evaluator",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "MCP server for the Hive Evaluator platform. Implements ERC-8183 / Virtuals ACP v2.0 evaluator-as-a-service: agents submit jobs, the evaluator scores them across 3 tiers (simple / evaluation / arbitrat",
   "type": "module",
   "main": "server.js",
