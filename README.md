@@ -113,3 +113,17 @@ This shim ships the Hive Civilization agent-native bundle so any A2A or MCP-awar
 - **x402 propagation** — paid responses pass through the upstream 402 body untouched so the consuming agent can auto-pay.
 - **Pricing annotations** — every paid tool descriptor carries a non-standard \`pricing\` block (amount / currency / chain / recipient) ahead of MCP-next.
 - Brand: Hive Civilization gold \`#C08D23\`. Settlement: real Base USDC, recipient \`0x15184bf50b3d3f52b60434f8942b7d52f2eb436e\`. No mock, no testnet.
+
+<!-- HIVE-GAMIFICATION-META-START -->
+## Hive Gamification
+
+This MCP server is part of the Hive Civilization gamification surface (10-mechanic capability taxonomy).
+
+- Capability taxonomy: https://hive-gamification.onrender.com/.well-known/hive-gamification.json
+- Centrifuge dashboard: https://hive-gamification.onrender.com/.well-known/hive-centrifuge.json
+- Consolidated OpenAPI: https://hive-gamification.onrender.com/.well-known/openapi.json
+
+**Surface tags:** `gamification.spec.v1` · `gamification.surface.public` · `gamification.signal.read-only` · `gamification.settlement.real-rails`
+
+Real rails on Base L2 (USDC `0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913`). Read-only signal layer. Brand gold `#C08D23`.
+<!-- HIVE-GAMIFICATION-META-END -->
