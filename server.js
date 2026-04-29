@@ -241,7 +241,7 @@ app.get('/agent.html', (req, res) => {
 // ─── Schema discoverability ────────────────────────────────────────────────
 const AGENT_CARD = {
   name: SERVICE,
-  description: `MCP server for the Hive Evaluator platform. Implements ERC-8183 / Virtuals ACP v2.0 evaluator-as-a-service: agents submit jobs, the evaluator scores them across 3 tiers (simple / evaluation / arbitrat. New agents: first call free. Loyalty: every 6th paid call is free. Pay in USDC on Base L2.`,
+  description: 'MCP server for the Hive Evaluator platform. ERC-8183 / Virtuals ACP v2.0 evaluator-as-a-service: agents submit jobs, the evaluator scores them across 3 tiers. USDC settlement on Base L2.. New agents: first call free. Loyalty: every 6th paid call is free. Pay in USDC on Base L2.',
   url: `https://${SERVICE}.onrender.com`,
   provider: {
     organization: 'Hive Civilization',
@@ -266,7 +266,12 @@ const AGENT_CARD = {
   },
   defaultInputModes: ['application/json'],
   defaultOutputModes: ['application/json'],
-  skills: TOOLS.map(t => ({ name: t.name, description: t.description })),
+  skills: [
+    { name: 'evaluator_get_fees', description: 'Get the live evaluator fee schedule (3 tiers, settlement currencies, recipient addresses, ERC-8183 / Virtuals ACP v2.0 spec). No auth required.' },
+    { name: 'evaluator_submit_job', description: 'Submit a job for evaluation. Choose tier (simple, evaluation, arbitration). Job value is quoted in USDC; fee = max($0.05, value * tier_bps / 10000). Returns job_id and quoted fee.' },
+    { name: 'evaluator_get_job', description: 'Retrieve evaluation status, verdict, and attestation for a previously-submitted job.' },
+    { name: 'evaluator_attest_job', description: 'Trigger settlement and emit the on-chain attestation for a completed job. Settles to the Hive Safe Treasury on the chain selected at submission. Requires EIP-3009 signature for Base/Ethereum.' },
+  ],
   extensions: {
     hive_pricing: {
       currency: 'USDC',
@@ -284,7 +289,7 @@ const AP2 = {
   agent: {
     name: SERVICE,
     did: `did:web:${SERVICE}.onrender.com`,
-    description: `MCP server for the Hive Evaluator platform. Implements ERC-8183 / Virtuals ACP v2.0 evaluator-as-a-service: agents submit jobs, the evaluator scores them across 3 tiers (simple / evaluation / arbitrat. New agents: first call free. Loyalty: every 6th paid call is free. Pay in USDC on Base L2.`,
+    description: 'MCP server for the Hive Evaluator platform. ERC-8183 / Virtuals ACP v2.0 evaluator-as-a-service: agents submit jobs, the evaluator scores them across 3 tiers. USDC settlement on Base L2.. New agents: first call free. Loyalty: every 6th paid call is free. Pay in USDC on Base L2.',
   },
   endpoints: {
     mcp: `https://${SERVICE}.onrender.com/mcp`,
@@ -304,7 +309,7 @@ const AP2 = {
 };
 
 app.get('/.well-known/agent-card.json', (req, res) => res.json(AGENT_CARD));
-app.get('/.well-known/ap2.json', (req, res) => res.json(AP2));
+app.get('/.well-known/ap2.json',         (req, res) => res.json(AP2));
 
 
 app.listen(PORT, () => {
